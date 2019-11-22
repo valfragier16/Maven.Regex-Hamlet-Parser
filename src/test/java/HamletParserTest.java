@@ -36,26 +36,26 @@ public class HamletParserTest<HoratioParser> {
     }
 
     @Test
-    public void testFindHoratio() {
-        String value = hamletText;
-        Pattern pattern = Pattern.compile("Horatio");
-        Matcher matcher = pattern.matcher(value);
-        Assert.assertTrue(matcher.find());
+    public void testChangeOpheliaToValerie() {
+        String input = "Fear it, Ophelia, fear it, my dear sister. To the celestial and my soul's idol, the most beautified Ophelia.";
+        String actual = HamletParser.opheliaReplacer(input);
+        String expected = "Fear it, Valerie, fear it, my dear sister. To the celestial and my soul's idol, the most beautified Valerie.";;
+
+        Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void testFindHoratio() {
+        Assert.assertTrue(HamletParser.finder(hamletText, "Horatio"));
+    }
+
     @Test
     public void testFindHoratio2() {
-        String value = hamletText;
-        Pattern pattern = Pattern.compile("Valerie is a such a great runner!");
-        Matcher matcher = pattern.matcher(value);
-        Assert.assertFalse(matcher.find());
+        Assert.assertFalse(HamletParser.finder(hamletText, "Valerie"));
     }
 
     @Test
     public void testFindHamlet() {
-        String value = hamletText;
-        Pattern pattern = Pattern.compile("Hamlet");
-        Matcher matcher = pattern.matcher(value);
-        Assert.assertTrue(matcher.find());
-
+        Assert.assertTrue(HamletParser.finder(hamletText, "Hamlet"));
     }
 }

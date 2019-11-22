@@ -32,6 +32,8 @@ public class HamletParser {
         return replacer(value,"Horatio", "Tariq");
     }
 
+    public static String opheliaReplacer(String value) { return replacer(value, "Ophelia", "Valerie");}
+
     private String loadFile(){
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("hamlet.txt").getFile());
@@ -56,4 +58,10 @@ public class HamletParser {
         return hamletData;
     }
 
+
+    public static Boolean finder(String input, String value) {
+        Pattern pattern = Pattern.compile("(?i:" + value + ")");
+        Matcher matcher = pattern.matcher(input);
+        return matcher.find();
+    }
 }
