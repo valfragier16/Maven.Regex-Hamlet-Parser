@@ -42,6 +42,13 @@ public class HamletParserTest<HoratioParser> {
         Matcher matcher = pattern.matcher(value);
         Assert.assertTrue(matcher.find());
     }
+    @Test
+    public void testFindHoratio2() {
+        String value = hamletText;
+        Pattern pattern = Pattern.compile("Valerie is a such a great runner!");
+        Matcher matcher = pattern.matcher(value);
+        Assert.assertFalse(matcher.find());
+    }
 
     @Test
     public void testFindHamlet() {
